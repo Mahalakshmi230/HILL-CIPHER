@@ -1,8 +1,7 @@
 # HILL CIPHER
 HILL CIPHER
-EX. NO: 3 AIM:
- 
-
+EX. NO: 3
+# AIM:
 IMPLEMENTATION OF HILL CIPHER
  
 ## To write a C program to implement the hill cipher substitution techniques.
@@ -24,12 +23,38 @@ randomly from the set of invertible n × n matrices (modulo 26).
 
 ## ALGORITHM:
 
-STEP-1: Read the plain text and key from the user. STEP-2: Split the plain text into groups of length three. STEP-3: Arrange the keyword in a 3*3 matrix.
+STEP-1: Read the plain text and key from the user. 
+STEP-2: Split the plain text into groups of length three. 
+STEP-3: Arrange the keyword in a 3*3 matrix.
 STEP-4: Multiply the two matrices to obtain the cipher text of length three.
 STEP-5: Combine all these groups to get the complete cipher text.
 
 ## PROGRAM 
-
+```
+#include <stdio.h> 
+int main()  
+{ 
+unsigned int key[3][3] = {{6, 24, 1}, {13, 16, 10}, {20, 17, 15}}; 
+unsigned int inverseKey[3][3] = {{8, 5, 10}, {21, 8, 21}, {21, 12, 8}}; 
+char msg[4]; 
+unsigned int enc[3] = {0}, dec[3] = {0}; 
+printf("Enter plain text: "); 
+scanf("%3s", msg); 
+for (int i = 0; i < 3; i++) 
+for (int j = 0; j < 3; j++) 
+enc[i] += key[i][j] * (msg[j] - 'A') % 26; 
+printf("Encrypted Cipher Text: %c%c%c\n", enc[0] % 26 + 'A', enc[1] % 26 + 'A', enc[2] 
+% 26 + 'A'); 
+for (int i = 0; i < 3; i++) 
+for (int j = 0; j < 3; j++) 
+dec[i] += inverseKey[i][j] * enc[j] % 26; 
+printf("Decrypted Cipher Text: %c%c%c\n", dec[0] % 26 + 'A', dec[1] % 26 + 'A', dec[2] 
+% 26 + 'A'); 
+return 0; 
+} 
+```
 ## OUTPUT
+![Screenshot 2025-03-17 154911](https://github.com/user-attachments/assets/dfba706b-2c84-43fe-be30-d5cb3f6d3688)
 
 ## RESULT
+Thus the program is executed successfully.
